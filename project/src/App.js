@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 import { useState, useEffect } from 'react';
 import MainMenu from './MainMenu';
+import SelectRoutine from './SelectRoutine';
 import './App.css';
 
 function App() {
@@ -15,8 +16,17 @@ function App() {
     return () => window.removeEventListener('popstate', handleLocationChange);
   }, []);
 
+  const navigate = (path) => {
+    window.history.pushState({}, '', path);
+    setCurrentPath(path);
+  };
+
   if (currentPath === '/MainMenu') {
     return <MainMenu />;
+  }
+
+  if (currentPath === '/SelectRoutine') {
+    return <SelectRoutine onBack={() => navigate('/')} />;
   }
   
   return (
@@ -41,40 +51,28 @@ function App() {
       <div className="App-buttons">
         <button
           className="App-button1"
-          onClick={() => {
-            window.history.pushState({}, '', '/MainMenu');
-            setCurrentPath('/MainMenu');
-          }}
+          onClick={() => navigate('/SelectRoutine')}
         >
           Start Workout
         </button>
 
                 <button
           className="App-button2"
-          onClick={() => {
-            window.history.pushState({}, '', '/MainMenu');
-            setCurrentPath('/MainMenu');
-          }}
+          onClick={() => navigate('/MainMenu')}
         >
           View workout log
         </button>
 
-                <button
+        <button
           className="App-button3"
-          onClick={() => {
-            window.history.pushState({}, '', '/MainMenu');
-            setCurrentPath('/MainMenu');
-          }}
+          onClick={() => navigate('/MainMenu')}
         >
           Browse new workout routines
         </button>
 
-                <button
+        <button
           className="App-button4"
-          onClick={() => {
-            window.history.pushState({}, '', '/MainMenu');
-            setCurrentPath('/MainMenu');
-          }}
+          onClick={() => navigate('/MainMenu')}
         >
           Design new workout routine
         </button>
