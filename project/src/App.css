@@ -1,0 +1,118 @@
+.App {
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+
+}
+
+.App-header {
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.App-name {
+  position: absolute;
+  top: 10%;
+  color: #1793FF;
+  font-family: Inter;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 1000;
+  line-height: normal;
+}
+
+.App-welcome {
+  position: absolute;
+  top: 20%;
+  color: #1793FF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.App-username {
+  position: absolute;
+  top: 25%;
+  color: #1793FF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.App-buttons {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: grid;
+
+  /* 2 columns */
+  grid-template-columns: repeat(2, 130px);
+
+  /* 2 rows */
+  grid-template-rows: repeat(2, 130px);
+
+  gap: 10px;
+}
+
+.App-button1,
+.App-button2,
+.App-button3,
+.App-button4 {
+  width: 130px;
+  height: 130px;
+  background-color: #1793FF;
+  border-radius: 10px;
+  color: white;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+/* Add hover effect for better UX */
+.App-button1:hover,
+.App-button2:hover,
+.App-button3:hover,
+.App-button4:hover {
+  background-color: #aed4f5;
+  transform: scale(1.05);
+}
+
+/* For mobile screens */
+@media (max-width: 768px) {
+  .App-buttons {
+    grid-template-columns: repeat(2, 130px);
+    gap: 15px;
+  }
+  
+  .App-button1,
+  .App-button2,
+  .App-button3,
+  .App-button4 {
+    width: 130px;
+    height: 130px;
+  }
+}
