@@ -16,35 +16,35 @@ const ROUTINES = {
   '/PushDayEasy': {
     name: 'Push Day (Chest and Triceps)',
     exercises: [
-      { name: 'Push Ups', recommended: '3 sets · 12 reps' },
-      { name: 'Chest Flies', recommended: '3 sets · 12 reps' },
-      { name: 'Incline Bench Press', recommended: '3 sets · 12 reps' },
+      { name: 'Push Ups', recommended: '3 sets - 12 reps' },
+      { name: 'Chest Flies', recommended: '3 sets - 12 reps' },
+      { name: 'Incline Bench Press', recommended: '3 sets - 12 reps' },
     ],
   },
   '/PushDayModerate': {
     name: 'Push Day (Chest and Triceps)',
     exercises: [
-      { name: 'Bench Press', recommended: '4 sets · 10 reps' },
-      { name: 'Incline Dumbbell Press', recommended: '4 sets · 10 reps' },
-      { name: 'Tricep Pushdown', recommended: '4 sets · 12 reps' },
-      { name: 'Cable Chest Flies', recommended: '4 sets · 12 reps' },
+      { name: 'Bench Press', recommended: '4 sets - 10 reps' },
+      { name: 'Incline Dumbbell Press', recommended: '4 sets - 10 reps' },
+      { name: 'Tricep Pushdown', recommended: '4 sets - 12 reps' },
+      { name: 'Cable Chest Flies', recommended: '4 sets - 12 reps' },
     ],
   },
   '/PullDayEasy': {
     name: 'Pull Day (Back and Biceps)',
     exercises: [
-      { name: 'Lat Pulldown', recommended: '3 sets · 12 reps' },
-      { name: 'Seated Cable Row', recommended: '3 sets · 12 reps' },
-      { name: 'Dumbbell Curl', recommended: '3 sets · 12 reps' },
+      { name: 'Lat Pulldown', recommended: '3 sets - 12 reps' },
+      { name: 'Seated Cable Row', recommended: '3 sets - 12 reps' },
+      { name: 'Dumbbell Curl', recommended: '3 sets - 12 reps' },
     ],
   },
   '/PullDayModerate': {
     name: 'Pull Day (Back and Biceps)',
     exercises: [
-      { name: 'Pull-Ups', recommended: '4 sets · 8 reps' },
-      { name: 'Barbell Row', recommended: '4 sets · 10 reps' },
-      { name: 'Face Pulls', recommended: '4 sets · 15 reps' },
-      { name: 'Hammer Curl', recommended: '4 sets · 12 reps' },
+      { name: 'Pull-Ups', recommended: '4 sets - 8 reps' },
+      { name: 'Barbell Row', recommended: '4 sets - 10 reps' },
+      { name: 'Face Pulls', recommended: '4 sets - 15 reps' },
+      { name: 'Hammer Curl', recommended: '4 sets - 12 reps' },
     ],
   },
 };
