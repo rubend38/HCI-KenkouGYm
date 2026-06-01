@@ -1,0 +1,141 @@
+.pde-container {
+  background-color: #d9d9d9;
+  min-height: 100vh;
+  padding: 20px 16px 40px;
+  font-family: Inter, sans-serif;
+  box-sizing: border-box;
+}
+
+.pde-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.pde-back-btn {
+  background-color: #1793ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.pde-back-btn:hover {
+  background-color: #aed4f5;
+}
+
+.pde-add-btn {
+  background-color: #1793ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+
+.pde-add-btn:hover {
+  background-color: #aed4f5;
+}
+
+.pde-add-icon {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.pde-title {
+  color: #1793ff;
+  font-size: 32px;
+  font-weight: 800;
+  text-align: center;
+  margin: 0 0 12px;
+  line-height: 1.2;
+}
+
+.pde-subtitle {
+  color: #1793ff;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: left;
+  margin: 0 0 20px;
+}
+
+.pde-exercises {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pde-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pde-card-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.pde-card-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #222;
+  margin: 0;
+}
+
+.pde-card-img {
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+  text-align: right;
+}
+
+.pde-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.pde-card-recommended {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.pde-select-btn {
+  background-color: #1793ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 24px;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.pde-select-btn:hover {
+  background-color: #aed4f5;
+}
