@@ -94,7 +94,7 @@ function BrowseRoutines({ onBack, onViewRoutine }) {
             <p><strong>Duration:</strong> {routine.duration}</p>
             <p><strong>Focus:</strong> {routine.focus}</p>
 
-            <button className="br-btn"
+            <button
                 className="br-btn"
                 onClick={() => onViewRoutine(routine)}
             >
