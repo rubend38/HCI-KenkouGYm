@@ -1,0 +1,104 @@
+.br-container {
+  background-color: #d9d9d9;
+  min-height: 100vh;
+  padding: 20px 16px 40px;
+  font-family: Inter, sans-serif;
+  box-sizing: border-box;
+}
+
+.br-back-btn {
+  background-color: #1793ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 24px;
+}
+
+.br-title {
+  color: #1793ff;
+  font-size: 36px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.br-subtitle {
+  text-align: center;
+  color: #333;
+  margin-bottom: 28px;
+}
+
+.br-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.br-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.br-card h2 {
+  margin: 0 0 8px;
+  color: #1793ff;
+  font-size: 20px;
+}
+
+.br-card p {
+  margin: 6px 0;
+  color: #333;
+}
+
+.br-btn {
+  margin-top: 12px;
+  background-color: #1793ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 9px;
+  width: 100%;
+  cursor: pointer;
+}
+.br-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 25px;
+  justify-content: center;
+}
+
+.br-search {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  width: 250px;
+}
+
+.br-select {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+}
+.br-btn:hover {
+  background-color: #0f7ad6;
+}
+
+.br-back-btn:hover {
+  background-color: #0f7ad6;
+}
+
+.br-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 16px;
+  transition: transform 0.2s ease;
+}
+
+.br-card:hover {
+  transform: translateY(-3px);
+}

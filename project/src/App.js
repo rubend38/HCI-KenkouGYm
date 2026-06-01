@@ -9,6 +9,8 @@ import './App.css';
 import DesignRoutine from './DesignRoutine';
 import RoutineCreated from './RoutineCreated';
 import ViewCreatedRoutine from './ViewCreatedRoutine';
+import BrowseRoutines from './BrowseRoutines';
+import ViewRoutineDetails from './ViewRoutineDetails';
 
 const ROUTINES = {
   '/PushDayEasy': {
@@ -54,6 +56,7 @@ function App() {
   const [completedExercises, setCompletedExercises] = useState(new Set());
   const [exerciseLogs, setExerciseLogs] = useState([]);
   const [createdRoutine, setCreatedRoutine] = useState({muscles: [], exercises: {},});
+  const [selectedRoutineDetails, setSelectedRoutineDetails] = useState(null);
 
   useEffect(() => {
     const handleLocationChange = () => {
@@ -187,6 +190,25 @@ function App() {
       />
     );
   }
+if (currentPath === '/BrowseRoutines') {
+  return (
+    <BrowseRoutines
+      onBack={() => navigate('/')}
+      onViewRoutine={(routine) => {
+        setSelectedRoutineDetails(routine);
+        navigate('/ViewRoutineDetails');
+      }}
+    />
+  );
+}
+if (currentPath === '/ViewRoutineDetails') {
+  return (
+    <ViewRoutineDetails
+      routine={selectedRoutineDetails}
+      onBack={() => navigate('/BrowseRoutines')}
+    />
+  );
+}
   
   return (
     <div className="App">
@@ -224,7 +246,7 @@ function App() {
 
         <button
           className="App-button3"
-          onClick={() => navigate('/MainMenu')}
+          onClick={() => navigate('/BrowseRoutines')}
         >
           Browse new workout routines
         </button>

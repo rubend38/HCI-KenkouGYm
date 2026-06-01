@@ -1,0 +1,26 @@
+.vrd-container {
+  background-color: #d9d9d9;
+  min-height: 100vh;
+  padding: 20px;
+  font-family: Inter, sans-serif;
+}
+
+.vrd-title {
+  color: #1793ff;
+  text-align: center;
+}
+
+.vrd-back-btn,
+.vrd-start-btn {
+  background-color: #1793ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.vrd-start-btn {
+  margin-top: 20px;
+  width: 100%;
+}
