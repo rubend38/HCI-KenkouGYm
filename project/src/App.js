@@ -4,12 +4,14 @@ import MainMenu from './MainMenu';
 import SelectRoutine from './SelectRoutine';
 import PushDayEasy from './PushDayEasy';
 import ExerciseLog from './ExerciseLog';
+import TodaysAccomplishments from './TodaysAccomplishments';
 import './App.css';
 
 function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const [selectedExercise, setSelectedExercise] = useState('');
   const [completedExercises, setCompletedExercises] = useState(new Set());
+  const [exerciseLogs, setExerciseLogs] = useState([]);
 
   useEffect(() => {
     const handleLocationChange = () => {
@@ -39,6 +41,7 @@ function App() {
         onBack={() => navigate('/SelectRoutine')}
         onAddExercise={() => {}}
         onSelectExercise={(name) => { setSelectedExercise(name); navigate('/ExerciseLog'); }}
+        onEndSession={() => navigate('/TodaysAccomplishments')}
         completedExercises={completedExercises}
       />
     );
@@ -48,9 +51,30 @@ function App() {
     return (
       <ExerciseLog
         exerciseName={selectedExercise}
-        onEndExercise={() => {
+        onEndExercise={(sets) => {
           setCompletedExercises(prev => new Set([...prev, selectedExercise]));
+          setExerciseLogs(prev => {
+            const existing = prev.findIndex(l => l.name === selectedExercise);
+            if (existing !== -1) {
+              return prev.map((l, i) => i === existing ? { name: selectedExercise, sets } : l);
+            }
+            return [...prev, { name: selectedExercise, sets }];
+          });
           navigate('/PushDayEasy');
+        }}
+      />
+    );
+  }
+
+  if (currentPath === '/TodaysAccomplishments') {
+    return (
+      <TodaysAccomplishments
+        exerciseLogs={exerciseLogs}
+        routineName="Push Day (Chest and Triceps)"
+        onGoHome={() => {
+          setCompletedExercises(new Set());
+          setExerciseLogs([]);
+          navigate('/');
         }}
       />
     );
