@@ -6,7 +6,7 @@ const exercises = [
   { name: 'Inclined Bench Press', recommended: '4 sets- 12reps' },
 ];
 
-function PushDayEasy({ onBack, onAddExercise }) {
+function PushDayEasy({ onBack, onAddExercise, onSelectExercise, completedExercises = new Set() }) {
   return (
     <div className="pde-container">
       <div className="pde-header">
@@ -21,18 +21,26 @@ function PushDayEasy({ onBack, onAddExercise }) {
       <h2 className="pde-subtitle">Push Day (Chest and Triceps)</h2>
 
       <div className="pde-exercises">
-        {exercises.map((ex) => (
-          <div key={ex.name} className="pde-card">
-            <div className="pde-card-info">
-              <p className="pde-card-name">{ex.name}</p>
-              <p className="pde-card-img">{'{Image of the Exercise}'}</p>
+        {exercises.map((ex) => {
+          const done = completedExercises.has(ex.name);
+          return (
+            <div key={ex.name} className={`pde-card${done ? ' pde-card--done' : ''}`}>
+              <div className="pde-card-info">
+                <p className="pde-card-name">{ex.name}</p>
+                <p className="pde-card-img">{'{Image of the Exercise}'}</p>
+              </div>
+              <div className="pde-card-footer">
+                <p className="pde-card-recommended">Recommended:<br />{ex.recommended}</p>
+                <button
+                  className={`pde-select-btn${done ? ' pde-select-btn--done' : ''}`}
+                  onClick={() => !done && onSelectExercise(ex.name)}
+                >
+                  {done ? 'Done ✓' : 'Select'}
+                </button>
+              </div>
             </div>
-            <div className="pde-card-footer">
-              <p className="pde-card-recommended">Recommended:<br />{ex.recommended}</p>
-              <button className="pde-select-btn">Select</button>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

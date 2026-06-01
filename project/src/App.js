@@ -3,10 +3,13 @@ import { useState, useEffect } from 'react';
 import MainMenu from './MainMenu';
 import SelectRoutine from './SelectRoutine';
 import PushDayEasy from './PushDayEasy';
+import ExerciseLog from './ExerciseLog';
 import './App.css';
 
 function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  const [selectedExercise, setSelectedExercise] = useState('');
+  const [completedExercises, setCompletedExercises] = useState(new Set());
 
   useEffect(() => {
     const handleLocationChange = () => {
@@ -31,7 +34,26 @@ function App() {
   }
 
   if (currentPath === '/PushDayEasy') {
-    return <PushDayEasy onBack={() => navigate('/SelectRoutine')} onAddExercise={() => {}} />;
+    return (
+      <PushDayEasy
+        onBack={() => navigate('/SelectRoutine')}
+        onAddExercise={() => {}}
+        onSelectExercise={(name) => { setSelectedExercise(name); navigate('/ExerciseLog'); }}
+        completedExercises={completedExercises}
+      />
+    );
+  }
+
+  if (currentPath === '/ExerciseLog') {
+    return (
+      <ExerciseLog
+        exerciseName={selectedExercise}
+        onEndExercise={() => {
+          setCompletedExercises(prev => new Set([...prev, selectedExercise]));
+          navigate('/PushDayEasy');
+        }}
+      />
+    );
   }
   
   return (

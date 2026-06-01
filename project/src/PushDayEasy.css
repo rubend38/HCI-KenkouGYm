@@ -139,3 +139,23 @@
 .pde-select-btn:hover {
   background-color: #aed4f5;
 }
+
+.pde-card--done {
+  background-color: #1793ff;
+}
+
+.pde-card--done .pde-card-name,
+.pde-card--done .pde-card-img,
+.pde-card--done .pde-card-recommended {
+  color: white;
+}
+
+.pde-select-btn--done {
+  background-color: white;
+  color: #1793ff;
+  cursor: default;
+}
+
+.pde-select-btn--done:hover {
+  background-color: white;
+}
