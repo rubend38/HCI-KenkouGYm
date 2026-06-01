@@ -1,19 +1,19 @@
 import './SelectRoutine.css';
 
-function SelectRoutine({ onBack }) {
+function SelectRoutine({ onBack, onNavigate }) {
   const routines = [
     {
       category: 'Pull Day (Back and Biceps)',
       options: [
-        { label: 'Easy (30 mins)' },
-        { label: 'Moderate (50 mins)' },
+        { label: 'Easy (30 mins)', route: null },
+        { label: 'Moderate (50 mins)', route: null },
       ],
     },
     {
       category: 'Push Day (Chest and Triceps)',
       options: [
-        { label: 'Easy (30 mins)' },
-        { label: 'Moderate (50 mins)' },
+        { label: 'Easy (30 mins)', route: '/PushDayEasy' },
+        { label: 'Moderate (50 mins)', route: null },
       ],
     },
   ];
@@ -34,7 +34,12 @@ function SelectRoutine({ onBack }) {
                   <p className="sr-card-title">{opt.label}</p>
                   <p className="sr-card-placeholder">{'{Images and Examples}'}</p>
                 </div>
-                <button className="sr-select-btn">Select</button>
+                <button
+                  className="sr-select-btn"
+                  onClick={() => opt.route && onNavigate(opt.route)}
+                >
+                  Select
+                </button>
               </div>
             ))}
           </div>

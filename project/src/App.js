@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import MainMenu from './MainMenu';
 import SelectRoutine from './SelectRoutine';
+import PushDayEasy from './PushDayEasy';
 import './App.css';
 
 function App() {
@@ -26,7 +27,11 @@ function App() {
   }
 
   if (currentPath === '/SelectRoutine') {
-    return <SelectRoutine onBack={() => navigate('/')} />;
+    return <SelectRoutine onBack={() => navigate('/')} onNavigate={navigate} />;
+  }
+
+  if (currentPath === '/PushDayEasy') {
+    return <PushDayEasy onBack={() => navigate('/SelectRoutine')} onAddExercise={() => {}} />;
   }
   
   return (
