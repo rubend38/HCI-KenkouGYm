@@ -7,9 +7,47 @@ import ExerciseLog from './ExerciseLog';
 import TodaysAccomplishments from './TodaysAccomplishments';
 import './App.css';
 
+const ROUTINES = {
+  '/PushDayEasy': {
+    name: 'Push Day (Chest and Triceps)',
+    exercises: [
+      { name: 'Push Ups', recommended: '3 sets · 12 reps' },
+      { name: 'Chest Flies', recommended: '3 sets · 12 reps' },
+      { name: 'Incline Bench Press', recommended: '3 sets · 12 reps' },
+    ],
+  },
+  '/PushDayModerate': {
+    name: 'Push Day (Chest and Triceps)',
+    exercises: [
+      { name: 'Bench Press', recommended: '4 sets · 10 reps' },
+      { name: 'Incline Dumbbell Press', recommended: '4 sets · 10 reps' },
+      { name: 'Tricep Pushdown', recommended: '4 sets · 12 reps' },
+      { name: 'Cable Chest Flies', recommended: '4 sets · 12 reps' },
+    ],
+  },
+  '/PullDayEasy': {
+    name: 'Pull Day (Back and Biceps)',
+    exercises: [
+      { name: 'Lat Pulldown', recommended: '3 sets · 12 reps' },
+      { name: 'Seated Cable Row', recommended: '3 sets · 12 reps' },
+      { name: 'Dumbbell Curl', recommended: '3 sets · 12 reps' },
+    ],
+  },
+  '/PullDayModerate': {
+    name: 'Pull Day (Back and Biceps)',
+    exercises: [
+      { name: 'Pull-Ups', recommended: '4 sets · 8 reps' },
+      { name: 'Barbell Row', recommended: '4 sets · 10 reps' },
+      { name: 'Face Pulls', recommended: '4 sets · 15 reps' },
+      { name: 'Hammer Curl', recommended: '4 sets · 12 reps' },
+    ],
+  },
+};
+
 function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const [selectedExercise, setSelectedExercise] = useState('');
+  const [activeRoutinePath, setActiveRoutinePath] = useState('/PushDayEasy');
   const [completedExercises, setCompletedExercises] = useState(new Set());
   const [exerciseLogs, setExerciseLogs] = useState([]);
 
@@ -17,7 +55,7 @@ function App() {
     const handleLocationChange = () => {
       setCurrentPath(window.location.pathname);
     };
-    
+
     window.addEventListener('popstate', handleLocationChange);
     return () => window.removeEventListener('popstate', handleLocationChange);
   }, []);
@@ -27,15 +65,23 @@ function App() {
     setCurrentPath(path);
   };
 
+  const navigateToRoutine = (path) => {
+    setActiveRoutinePath(path);
+    setCompletedExercises(new Set());
+    setExerciseLogs([]);
+    navigate(path);
+  };
+
   if (currentPath === '/MainMenu') {
     return <MainMenu />;
   }
 
   if (currentPath === '/SelectRoutine') {
-    return <SelectRoutine onBack={() => navigate('/')} onNavigate={navigate} />;
+    return <SelectRoutine onBack={() => navigate('/')} onNavigate={navigateToRoutine} />;
   }
 
-  if (currentPath === '/PushDayEasy') {
+  const activeRoutine = ROUTINES[currentPath];
+  if (activeRoutine) {
     return (
       <PushDayEasy
         onBack={() => navigate('/SelectRoutine')}
@@ -43,6 +89,8 @@ function App() {
         onSelectExercise={(name) => { setSelectedExercise(name); navigate('/ExerciseLog'); }}
         onEndSession={() => navigate('/TodaysAccomplishments')}
         completedExercises={completedExercises}
+        exercises={activeRoutine.exercises}
+        routineName={activeRoutine.name}
       />
     );
   }
@@ -60,17 +108,18 @@ function App() {
             }
             return [...prev, { name: selectedExercise, sets }];
           });
-          navigate('/PushDayEasy');
+          navigate(activeRoutinePath);
         }}
       />
     );
   }
 
   if (currentPath === '/TodaysAccomplishments') {
+    const routine = ROUTINES[activeRoutinePath];
     return (
       <TodaysAccomplishments
         exerciseLogs={exerciseLogs}
-        routineName="Push Day (Chest and Triceps)"
+        routineName={routine ? routine.name : ''}
         onGoHome={() => {
           setCompletedExercises(new Set());
           setExerciseLogs([]);

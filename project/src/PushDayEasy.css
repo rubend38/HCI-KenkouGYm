@@ -162,8 +162,9 @@
 
 .pde-end-session-row {
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 20px;
+  justify-content: center;
+  margin-top: 28px;
+  padding-bottom: 16px;
 }
 
 .pde-end-session-btn {
