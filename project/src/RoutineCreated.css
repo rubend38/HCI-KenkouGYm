@@ -1,0 +1,28 @@
+.rc-container {
+  margin-top: 80px;
+  padding: 30px;
+  text-align: center;
+}
+
+.rc-title {
+  color: #1793ff;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.rc-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.rc-btn {
+  height: 60px;
+  background-color: #1793ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}

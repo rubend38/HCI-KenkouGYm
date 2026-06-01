@@ -1,0 +1,78 @@
+.dr-container {
+  padding: 20px;
+}
+
+.dr-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1793ff;
+  font-size: 32px;
+  font-weight: 800;
+  text-align: center;
+  margin: 0 0 32px;
+  line-height: 1.2;
+}
+
+.dr-muscle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.dr-muscle-btn,
+.dr-exercise-btn {
+  /* padding: 15px;
+  border: 2px solid black;
+  background: white;
+  cursor: pointer; */
+  
+  height: 60px;
+  background-color: #1793ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background-color 0.2s;
+}
+
+.selected {
+  background: #a9bfe8;
+}
+
+.dr-exercise-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dr-select-btn,
+.dr-next-btn,
+.dr-back-btn {
+  background-color: #1793ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 24px;
+  transition: background-color 0.2s;
+}
+
+.dr-next-btn,
+.dr-select-btn {
+    margin-top: 20px;
+}
+
+.dr-next-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5px;
+}
