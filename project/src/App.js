@@ -6,6 +6,9 @@ import PushDayEasy from './PushDayEasy';
 import ExerciseLog from './ExerciseLog';
 import TodaysAccomplishments from './TodaysAccomplishments';
 import './App.css';
+import DesignRoutine from './DesignRoutine';
+import RoutineCreated from './RoutineCreated';
+import ViewCreatedRoutine from './ViewCreatedRoutine';
 
 const ROUTINES = {
   '/PushDayEasy': {
@@ -50,6 +53,7 @@ function App() {
   const [activeRoutinePath, setActiveRoutinePath] = useState('/PushDayEasy');
   const [completedExercises, setCompletedExercises] = useState(new Set());
   const [exerciseLogs, setExerciseLogs] = useState([]);
+  const [createdRoutine, setCreatedRoutine] = useState({muscles: [], exercises: {},});
 
   useEffect(() => {
     const handleLocationChange = () => {
@@ -128,6 +132,61 @@ function App() {
       />
     );
   }
+
+  if (currentPath === '/DesignRoutine') {
+    return (
+      <DesignRoutine
+        onBack={() => navigate('/')}
+        onRoutineCreated={(muscles, exercises) => {
+          setCreatedRoutine({
+            muscles,
+            exercises,
+          });
+
+          navigate('/RoutineCreated');
+        }}
+      />
+    );
+  }
+
+  if (currentPath === '/RoutineCreated') {
+    return (
+      <RoutineCreated
+        selectedMuscles={
+          createdRoutine.muscles
+        }
+        onViewRoutine={() =>
+          navigate('/ViewRoutine')
+        }
+        onStartRoutine={() =>
+          navigate('/StartCustomRoutine')
+        }
+        onCreateNewRoutine={() =>
+          navigate('/DesignRoutine')
+        }
+        onViewOtherRoutines={() =>
+          navigate('/SelectRoutine')
+        }
+      />
+    );
+  }
+
+  if (currentPath === '/ViewRoutine') {
+    return (
+      <ViewCreatedRoutine
+        routine={createdRoutine}
+        onBack={() => navigate('/RoutineCreated')}
+        onSelectExercise={(name) => {
+          setSelectedExercise(name);
+          navigate('/ExerciseLog');
+        }}
+        onEndSession={() =>
+          navigate('/TodaysAccomplishments')
+        }
+        completedExercises={completedExercises}
+      />
+    );
+  }
   
   return (
     <div className="App">
@@ -172,7 +231,7 @@ function App() {
 
         <button
           className="App-button4"
-          onClick={() => navigate('/MainMenu')}
+          onClick={() => navigate('/DesignRoutine')}
         >
           Design new workout routine
         </button>
