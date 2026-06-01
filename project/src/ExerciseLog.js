@@ -115,7 +115,7 @@ function ExerciseLog({ exerciseName, onEndExercise }) {
       ))}
 
       <div className="el-footer">
-        <button className="el-end-btn" onClick={onEndExercise}>End Exercise</button>
+        <button className="el-end-btn" onClick={() => onEndExercise(sets)}>End Exercise</button>
       </div>
     </div>
   );

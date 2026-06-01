@@ -6,7 +6,7 @@ const exercises = [
   { name: 'Inclined Bench Press', recommended: '4 sets- 12reps' },
 ];
 
-function PushDayEasy({ onBack, onAddExercise, onSelectExercise, completedExercises = new Set() }) {
+function PushDayEasy({ onBack, onAddExercise, onSelectExercise, onEndSession, completedExercises = new Set() }) {
   return (
     <div className="pde-container">
       <div className="pde-header">
@@ -19,6 +19,10 @@ function PushDayEasy({ onBack, onAddExercise, onSelectExercise, completedExercis
 
       <h1 className="pde-title">Select an Exercise to Start</h1>
       <h2 className="pde-subtitle">Push Day (Chest and Triceps)</h2>
+
+      <div className="pde-end-session-row">
+        <button className="pde-end-session-btn" onClick={onEndSession}>End Session</button>
+      </div>
 
       <div className="pde-exercises">
         {exercises.map((ex) => {

@@ -159,3 +159,26 @@
 .pde-select-btn--done:hover {
   background-color: white;
 }
+
+.pde-end-session-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.pde-end-session-btn {
+  background-color: #1793ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 24px;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.pde-end-session-btn:hover {
+  background-color: #aed4f5;
+}
