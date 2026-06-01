@@ -1,12 +1,20 @@
 import './PushDayEasy.css';
 
-const exercises = [
-  { name: 'Push ups', recommended: '4 sets- 12reps' },
-  { name: 'Chest Flies', recommended: '4 sets- 12reps' },
-  { name: 'Inclined Bench Press', recommended: '4 sets- 12reps' },
+const DEFAULT_EXERCISES = [
+  { name: 'Push Ups', recommended: '3 sets · 12 reps' },
+  { name: 'Chest Flies', recommended: '3 sets · 12 reps' },
+  { name: 'Incline Bench Press', recommended: '3 sets · 12 reps' },
 ];
 
-function PushDayEasy({ onBack, onAddExercise, onSelectExercise, onEndSession, completedExercises = new Set() }) {
+function PushDayEasy({
+  onBack,
+  onAddExercise,
+  onSelectExercise,
+  onEndSession,
+  completedExercises = new Set(),
+  exercises = DEFAULT_EXERCISES,
+  routineName = 'Push Day (Chest and Triceps)',
+}) {
   return (
     <div className="pde-container">
       <div className="pde-header">
@@ -18,11 +26,7 @@ function PushDayEasy({ onBack, onAddExercise, onSelectExercise, onEndSession, co
       </div>
 
       <h1 className="pde-title">Select an Exercise to Start</h1>
-      <h2 className="pde-subtitle">Push Day (Chest and Triceps)</h2>
-
-      <div className="pde-end-session-row">
-        <button className="pde-end-session-btn" onClick={onEndSession}>End Session</button>
-      </div>
+      <h2 className="pde-subtitle">{routineName}</h2>
 
       <div className="pde-exercises">
         {exercises.map((ex) => {
@@ -45,6 +49,10 @@ function PushDayEasy({ onBack, onAddExercise, onSelectExercise, onEndSession, co
             </div>
           );
         })}
+      </div>
+
+      <div className="pde-end-session-row">
+        <button className="pde-end-session-btn" onClick={onEndSession}>End Session</button>
       </div>
     </div>
   );

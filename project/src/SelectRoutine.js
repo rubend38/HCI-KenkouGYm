@@ -5,15 +5,15 @@ function SelectRoutine({ onBack, onNavigate }) {
     {
       category: 'Pull Day (Back and Biceps)',
       options: [
-        { label: 'Easy (30 mins)', route: null },
-        { label: 'Moderate (50 mins)', route: null },
+        { label: 'Easy (30 mins)', route: '/PullDayEasy' },
+        { label: 'Moderate (50 mins)', route: '/PullDayModerate' },
       ],
     },
     {
       category: 'Push Day (Chest and Triceps)',
       options: [
         { label: 'Easy (30 mins)', route: '/PushDayEasy' },
-        { label: 'Moderate (50 mins)', route: null },
+        { label: 'Moderate (50 mins)', route: '/PushDayModerate' },
       ],
     },
   ];
