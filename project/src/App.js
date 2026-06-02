@@ -59,6 +59,7 @@ function App() {
   const [completedExercises, setCompletedExercises] = useState(new Set());
   const [exerciseLogs, setExerciseLogs] = useState([]);
   const [createdRoutine, setCreatedRoutine] = useState({muscles: [], exercises: {},});
+  const [customWorkoutExercises, setCustomWorkoutExercises] = useState([]);
   const [selectedRoutineDetails, setSelectedRoutineDetails] = useState(null);
   const [reportMonth, setReportMonth] = useState('March 2026');
   const [trackedWorkout, setTrackedWorkout] = useState(null);
@@ -168,9 +169,22 @@ function App() {
         onViewRoutine={() =>
           navigate('/ViewRoutine')
         }
-        onStartRoutine={() =>
-          navigate('/StartCustomRoutine')
-        }
+        onStartRoutine={() => {
+          const exercises = [];
+
+          Object.entries(createdRoutine.exercises)
+            .forEach(([muscle, muscleExercises]) => {
+              muscleExercises.forEach(exercise => {
+                exercises.push({
+                  name: exercise,
+                  recommended: `${muscle} Exercise`
+                });
+              });
+            });
+
+          setCustomWorkoutExercises(exercises);
+          navigate('/StartCustomRoutine');
+        }}
         onCreateNewRoutine={() =>
           navigate('/DesignRoutine')
         }
@@ -186,6 +200,37 @@ function App() {
       <ViewCreatedRoutine
         routine={createdRoutine}
         onBack={() => navigate('/RoutineCreated')}
+        onDeleteExercises={(exerciseNames) => {
+          const updatedExercises = {};
+
+          Object.entries(createdRoutine.exercises).forEach(
+            ([muscle, exercises]) => {
+              updatedExercises[muscle] =
+                exercises.filter(
+                  ex => !exerciseNames.includes(ex)
+                );
+            }
+          );
+
+          setCreatedRoutine({
+            ...createdRoutine,
+            exercises: updatedExercises,
+          });
+        }}
+        onStartWorkout={(exercises) => {
+          setCustomWorkoutExercises(exercises);
+          navigate('/StartCustomRoutine');
+        }}
+        completedExercises={completedExercises}
+      />
+    );
+  }
+
+  if (currentPath === '/StartCustomRoutine') {
+    return (
+      <PushDayEasy
+        onBack={() => navigate('/ViewRoutine')}
+        onAddExercise={() => {}}
         onSelectExercise={(name) => {
           setSelectedExercise(name);
           navigate('/ExerciseLog');
@@ -194,28 +239,31 @@ function App() {
           navigate('/TodaysAccomplishments')
         }
         completedExercises={completedExercises}
+        exercises={customWorkoutExercises}
+        routineName="Custom Routine"
       />
     );
   }
-if (currentPath === '/BrowseRoutines') {
-  return (
-    <BrowseRoutines
-      onBack={() => navigate('/')}
-      onViewRoutine={(routine) => {
-        setSelectedRoutineDetails(routine);
-        navigate('/ViewRoutineDetails');
-      }}
-    />
-  );
-}
-if (currentPath === '/ViewRoutineDetails') {
-  return (
-    <ViewRoutineDetails
-      routine={selectedRoutineDetails}
-      onBack={() => navigate('/BrowseRoutines')}
-    />
-  );
-}
+  
+  if (currentPath === '/BrowseRoutines') {
+    return (
+      <BrowseRoutines
+        onBack={() => navigate('/')}
+        onViewRoutine={(routine) => {
+          setSelectedRoutineDetails(routine);
+          navigate('/ViewRoutineDetails');
+        }}
+      />
+    );
+  }
+  if (currentPath === '/ViewRoutineDetails') {
+    return (
+      <ViewRoutineDetails
+        routine={selectedRoutineDetails}
+        onBack={() => navigate('/BrowseRoutines')}
+      />
+    );
+  }
 
   if (currentPath === '/WorkoutLog') {
     return (

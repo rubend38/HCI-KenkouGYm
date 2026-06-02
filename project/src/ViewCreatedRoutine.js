@@ -4,8 +4,8 @@ import ViewRoutine from './ViewRoutine';
 function ViewCreatedRoutine({
   routine,
   onBack,
-  onSelectExercise,
-  onEndSession,
+  onDeleteExercises,
+  onStartWorkout,
   completedExercises,
 }) {
   const exercises = [];
@@ -25,10 +25,10 @@ function ViewCreatedRoutine({
     <ViewRoutine
       onBack={onBack}
       onAddExercise={() => {}}
-      onSelectExercise={onSelectExercise}
-      onEndSession={onEndSession}
+      onDeleteExercises={onDeleteExercises}
       completedExercises={completedExercises}
       exercises={exercises}
+      onStartWorkout={onStartWorkout}
       routineName="Custom Routine"
     />
   );

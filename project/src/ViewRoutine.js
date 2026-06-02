@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './ViewRoutine.css';
 
 const DEFAULT_EXERCISES = [
@@ -9,12 +10,25 @@ const DEFAULT_EXERCISES = [
 function ViewRoutine({
   onBack,
   onAddExercise,
-  onSelectExercise,
-  onEndSession,
+  onDeleteExercises,
+  onStartWorkout,
   completedExercises = new Set(),
   exercises = DEFAULT_EXERCISES,
   routineName = 'Push Day (Chest and Triceps)',
 }) {
+  const [selectedExercises, setSelectedExercises] = useState([]);
+  const toggleExercise = (exerciseName) => {
+    if (selectedExercises.includes(exerciseName)) {
+      setSelectedExercises(
+        selectedExercises.filter(e => e !== exerciseName)
+      );
+    } else {
+      setSelectedExercises([
+        ...selectedExercises,
+        exerciseName
+      ]);
+    }
+  };
   return (
     <div className="pde-container">
       <div className="pde-header">
@@ -40,10 +54,16 @@ function ViewRoutine({
               <div className="pde-card-footer">
                 <p className="pde-card-recommended">Recommended:<br />{ex.recommended}</p>
                 <button
-                  className={`pde-select-btn${done ? ' pde-select-btn--done' : ''}`}
-                  onClick={() => !done && onSelectExercise(ex.name)}
+                  className={`pde-select-btn ${
+                    selectedExercises.includes(ex.name)
+                      ? 'pde-select-btn--done'
+                      : ''
+                  }`}
+                  onClick={() => toggleExercise(ex.name)}
                 >
-                  {done ? 'Done ✓' : 'Select'}
+                  {selectedExercises.includes(ex.name)
+                    ? 'Selected'
+                    : 'Select'}
                 </button>
               </div>
             </div>
@@ -52,8 +72,21 @@ function ViewRoutine({
       </div>
 
       <div className="pde-button-row">
-        <button className="pde-delete-btn" > Delete exercise(s)</button>
-        <button className="pde-start-btn" > Start workout</button>
+        <button 
+          className="pde-delete-btn"
+          onClick={() => {
+            onDeleteExercises(selectedExercises);
+            setSelectedExercises([]);
+          }}
+        >
+          Delete exercise(s)
+        </button>
+        <button 
+          className="pde-start-btn"
+          onClick={() => onStartWorkout(exercises)}
+        >
+          Start workout
+        </button>
       </div>
     </div>
   );
