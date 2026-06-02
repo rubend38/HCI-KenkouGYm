@@ -11,6 +11,10 @@ import RoutineCreated from './RoutineCreated';
 import ViewCreatedRoutine from './ViewCreatedRoutine';
 import BrowseRoutines from './BrowseRoutines';
 import ViewRoutineDetails from './ViewRoutineDetails';
+import WorkoutLog from './WorkoutLog';
+import MonthlyReport from './MonthlyReport';
+import AdjustGoals from './AdjustGoals';
+import WorkoutTracker from './WorkoutTracker';
 
 const ROUTINES = {
   '/PushDayEasy': {
@@ -57,6 +61,14 @@ function App() {
   const [exerciseLogs, setExerciseLogs] = useState([]);
   const [createdRoutine, setCreatedRoutine] = useState({muscles: [], exercises: {},});
   const [selectedRoutineDetails, setSelectedRoutineDetails] = useState(null);
+  const [reportMonth, setReportMonth] = useState('March 2026');
+  const [trackedWorkout, setTrackedWorkout] = useState(null);
+  const [personalGoals, setPersonalGoals] = useState({
+    weeklyTarget: 4,
+    sessionMinutes: 50,
+    primaryMuscle: 'Chest',
+    monthlyTarget: 16,
+  });
 
   useEffect(() => {
     const handleLocationChange = () => {
@@ -209,6 +221,56 @@ if (currentPath === '/ViewRoutineDetails') {
     />
   );
 }
+
+  if (currentPath === '/WorkoutLog') {
+    return (
+      <WorkoutLog
+        onBack={() => navigate('/')}
+        onViewReport={(month) => {
+          setReportMonth(month);
+          navigate('/MonthlyReport');
+        }}
+        onViewTracker={(workout) => {
+          setTrackedWorkout(workout);
+          navigate('/WorkoutTracker');
+        }}
+      />
+    );
+  }
+
+  if (currentPath === '/WorkoutTracker') {
+    return (
+      <WorkoutTracker
+        workout={trackedWorkout}
+        onBack={() => navigate('/WorkoutLog')}
+      />
+    );
+  }
+
+  if (currentPath === '/MonthlyReport') {
+    return (
+      <MonthlyReport
+        initialMonth={reportMonth}
+        onBack={() => navigate('/WorkoutLog')}
+        onAdjustGoals={() => navigate('/AdjustGoals')}
+      />
+    );
+  }
+
+  if (currentPath === '/AdjustGoals') {
+    return (
+      <AdjustGoals
+        initialGoals={personalGoals}
+        onBack={() => navigate('/MonthlyReport')}
+        onSave={(goals) => {
+          setPersonalGoals(goals);
+          // eslint-disable-next-line no-alert
+          alert('Goals saved!');
+          navigate('/MonthlyReport');
+        }}
+      />
+    );
+  }
   
   return (
     <div className="App">
@@ -239,7 +301,7 @@ if (currentPath === '/ViewRoutineDetails') {
 
                 <button
           className="App-button2"
-          onClick={() => navigate('/MainMenu')}
+          onClick={() => navigate('/WorkoutLog')}
         >
           View workout log
         </button>

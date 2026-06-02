@@ -1,0 +1,155 @@
+.wl-container {
+  background-color: #d9d9d9;
+  min-height: 100vh;
+  padding: 20px 16px 40px;
+  font-family: Inter, sans-serif;
+  box-sizing: border-box;
+}
+
+.wl-back-btn {
+  background-color: #1793ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: background-color 0.2s;
+}
+
+.wl-back-btn:hover {
+  background-color: #0f7ad6;
+}
+
+.wl-title {
+  color: #1793ff;
+  font-size: 36px;
+  font-weight: 800;
+  text-align: center;
+  margin: 0 0 24px;
+  line-height: 1.2;
+}
+
+.wl-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.wl-month-select {
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: none;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: white;
+  cursor: pointer;
+  min-width: 200px;
+}
+
+.wl-report-btn {
+  background-color: #1793ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.wl-report-btn:hover {
+  background-color: #0f7ad6;
+}
+
+.wl-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.wl-empty {
+  text-align: center;
+  color: #555;
+  font-size: 16px;
+  margin-top: 40px;
+}
+
+.wl-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.2s ease;
+}
+
+.wl-card:hover {
+  transform: translateY(-2px);
+}
+
+.wl-card-left {
+  flex: 1;
+}
+
+.wl-workout-name {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1793ff;
+}
+
+.wl-card-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.wl-minutes {
+  color: #333;
+  font-size: 15px;
+}
+
+.wl-tracker-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #1793ff;
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+}
+
+.wl-tracker-link:hover {
+  color: #0f7ad6;
+}
+
+.wl-card-right {
+  text-align: right;
+  min-width: 110px;
+}
+
+.wl-weekday {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.wl-date {
+  margin: 2px 0 0;
+  font-size: 14px;
+  color: #666;
+}
