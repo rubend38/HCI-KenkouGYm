@@ -1,0 +1,125 @@
+.ag-container {
+  background-color: #d9d9d9;
+  min-height: 100vh;
+  padding: 20px 16px 60px;
+  font-family: Inter, sans-serif;
+  box-sizing: border-box;
+}
+
+.ag-back-btn {
+  background-color: #1793ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: background-color 0.2s;
+}
+
+.ag-back-btn:hover {
+  background-color: #0f7ad6;
+}
+
+.ag-title {
+  color: #1793ff;
+  font-size: 32px;
+  font-weight: 800;
+  text-align: center;
+  margin: 0 0 28px;
+  line-height: 1.2;
+}
+
+.ag-form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ag-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ag-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+}
+
+.ag-stepper,
+.ag-select-row {
+  background-color: white;
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ag-unit-label {
+  flex: 1;
+  font-size: 14px;
+  color: #555;
+}
+
+.ag-step-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: none;
+  background-color: #1793ff;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.ag-step-btn:hover {
+  background-color: #0f7ad6;
+}
+
+.ag-step-value {
+  min-width: 50px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+}
+
+.ag-muscle-select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: white;
+  cursor: pointer;
+  min-width: 140px;
+}
+
+.ag-save-btn {
+  margin-top: 12px;
+  background-color: #1793ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 32px;
+  font-family: Inter, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  align-self: center;
+  transition: background-color 0.2s;
+}
+
+.ag-save-btn:hover {
+  background-color: #0f7ad6;
+}
