@@ -1,6 +1,5 @@
 // import logo from './logo.svg';
 import { useState, useEffect } from 'react';
-import MainMenu from './MainMenu';
 import SelectRoutine from './SelectRoutine';
 import PushDayEasy from './PushDayEasy';
 import ExerciseLog from './ExerciseLog';
@@ -90,10 +89,6 @@ function App() {
     setExerciseLogs([]);
     navigate(path);
   };
-
-  if (currentPath === '/MainMenu') {
-    return <MainMenu />;
-  }
 
   if (currentPath === '/SelectRoutine') {
     return <SelectRoutine onBack={() => navigate('/')} onNavigate={navigateToRoutine} />;
