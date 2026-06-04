@@ -269,6 +269,9 @@ function App() {
       <ViewRoutineDetails
         routine={selectedRoutineDetails}
         onBack={() => navigate('/BrowseRoutines')}
+        onStartWorkout={(route) => {
+          navigateToRoutine(route);
+        }}
       />
     );
   }

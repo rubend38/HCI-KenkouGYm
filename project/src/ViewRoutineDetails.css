@@ -18,9 +18,21 @@
   border-radius: 6px;
   padding: 10px 16px;
   cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
 .vrd-start-btn {
   margin-top: 20px;
   width: 100%;
+}
+.vrd-start-btn:hover {
+  background-color: #aed4f5;
+}
+.vrd-back-btn:hover {
+  background-color: #aed4f5;
+}
+
+.vrd-start-btn:active {
+  transform: scale(0.97);
+  background-color: #0b5fa8;
 }

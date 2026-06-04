@@ -1,6 +1,10 @@
 import './ViewRoutineDetails.css';
 
-function ViewRoutineDetails({ routine, onBack }) {
+function ViewRoutineDetails( {
+  routine,
+  onBack,
+  onStartWorkout,
+}) {
   return (
     <div className="vrd-container">
 
@@ -37,7 +41,9 @@ function ViewRoutineDetails({ routine, onBack }) {
         ))}
       </ul>
 
-      <button className="vrd-start-btn">
+      <button className="vrd-start-btn"
+        onClick = {() => onStartWorkout(routine.route)}
+        >
         Start Workout
       </button>
 
