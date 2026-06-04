@@ -1,5 +1,6 @@
 // import logo from './logo.svg';
 import { useState, useEffect } from 'react';
+import BottomNav from './bottomNav';
 import SelectRoutine from './SelectRoutine';
 import PushDayEasy from './PushDayEasy';
 import ExerciseLog from './ExerciseLog';
@@ -70,6 +71,13 @@ function App() {
     monthlyTarget: 16,
   });
 
+  const renderPage = (page) => (
+    <>
+      {page}
+      <BottomNav navigate={navigate} />
+    </>
+  );
+
   useEffect(() => {
     const handleLocationChange = () => {
       setCurrentPath(window.location.pathname);
@@ -92,12 +100,12 @@ function App() {
   };
 
   if (currentPath === '/SelectRoutine') {
-    return <SelectRoutine onBack={() => navigate('/')} onNavigate={navigateToRoutine} />;
+    return renderPage(<SelectRoutine onBack={() => navigate('/')} onNavigate={navigateToRoutine} />);
   }
 
   const activeRoutine = ROUTINES[currentPath];
   if (activeRoutine) {
-    return (
+    return renderPage(
       <PushDayEasy
         onBack={() => navigate('/SelectRoutine')}
         onAddExercise={() => {}}
@@ -111,7 +119,7 @@ function App() {
   }
 
   if (currentPath === '/ExerciseLog') {
-    return (
+    return renderPage(
       <ExerciseLog
         exerciseName={selectedExercise}
         onEndExercise={(sets) => {
@@ -131,7 +139,7 @@ function App() {
 
   if (currentPath === '/TodaysAccomplishments') {
     const routine = ROUTINES[activeRoutinePath];
-    return (
+    return renderPage(
       <TodaysAccomplishments
         exerciseLogs={exerciseLogs}
         routineName={routine ? routine.name : ''}
@@ -145,7 +153,7 @@ function App() {
   }
 
   if (currentPath === '/DesignRoutine') {
-    return (
+    return renderPage(
       <DesignRoutine
         onBack={() => navigate('/')}
         onRoutineCreated={(muscles, exercises) => {
@@ -161,7 +169,7 @@ function App() {
   }
 
   if (currentPath === '/RoutineCreated') {
-    return (
+    return renderPage(
       <RoutineCreated
         selectedMuscles={
           createdRoutine.muscles
@@ -196,7 +204,7 @@ function App() {
   }
 
   if (currentPath === '/ViewRoutine') {
-    return (
+    return renderPage(
       <ViewCreatedRoutine
         routine={createdRoutine}
         onBack={() => navigate('/RoutineCreated')}
@@ -227,7 +235,7 @@ function App() {
   }
 
   if (currentPath === '/StartCustomRoutine') {
-    return (
+    return renderPage(
       <PushDayEasy
         onBack={() => navigate('/ViewRoutine')}
         onAddExercise={() => {}}
@@ -246,7 +254,7 @@ function App() {
   }
   
   if (currentPath === '/BrowseRoutines') {
-    return (
+    return renderPage(
       <BrowseRoutines
         onBack={() => navigate('/')}
         onViewRoutine={(routine) => {
@@ -257,7 +265,7 @@ function App() {
     );
   }
   if (currentPath === '/ViewRoutineDetails') {
-    return (
+    return renderPage(
       <ViewRoutineDetails
         routine={selectedRoutineDetails}
         onBack={() => navigate('/BrowseRoutines')}
@@ -266,7 +274,7 @@ function App() {
   }
 
   if (currentPath === '/WorkoutLog') {
-    return (
+    return renderPage(
       <WorkoutLog
         onBack={() => navigate('/')}
         onViewReport={(month) => {
@@ -282,7 +290,7 @@ function App() {
   }
 
   if (currentPath === '/WorkoutTracker') {
-    return (
+    return renderPage(
       <WorkoutTracker
         workout={trackedWorkout}
         onBack={() => navigate('/WorkoutLog')}
@@ -291,7 +299,7 @@ function App() {
   }
 
   if (currentPath === '/MonthlyReport') {
-    return (
+    return renderPage(
       <MonthlyReport
         initialMonth={reportMonth}
         onBack={() => navigate('/WorkoutLog')}
@@ -301,7 +309,7 @@ function App() {
   }
 
   if (currentPath === '/AdjustGoals') {
-    return (
+    return renderPage(
       <AdjustGoals
         initialGoals={personalGoals}
         onBack={() => navigate('/MonthlyReport')}
@@ -315,7 +323,7 @@ function App() {
     );
   }
   
-  return (
+  return renderPage(
     <div className="App">
       <header className="App-header">
         <p className="App-name"> KENKOU-Gym </p>
