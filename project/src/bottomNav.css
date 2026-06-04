@@ -1,0 +1,50 @@
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  height: 60px;
+
+  background: white;
+  /* background-color: gray; */
+  /* background: #1793FF; */
+  border-top: 1px solid #ccc;
+  margin: 5px;
+  z-index: 1000;
+}
+
+.bottom-nav button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+  /* background-color: white; */
+  /* background-color: gray; */
+  /* background-color: #1793FF; */
+}
+
+.nav-home {
+    width: 50px;
+    border-radius: 5px;
+}
+
+.nav-community {
+    height: 45px;
+    border-radius: 5px;
+}
+
+.nav-profile {
+    width: 45px;
+    border-radius: 5px;
+}
+
+.nav-settings {
+    width: 45px;
+    border-radius: 5px;
+}
