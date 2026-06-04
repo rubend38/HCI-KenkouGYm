@@ -18,10 +18,8 @@ function PushDayEasy({
   return (
     <div className="pde-container">
       <div className="pde-header">
-        <button className="pde-back-btn" onClick={onBack}>BACK</button>
-        <button className="pde-add-btn" onClick={onAddExercise}>
-          <span className="pde-add-icon">+</span>
-          Add New Exercise
+        <button className="pde-back-btn" onClick={onBack}>
+          BACK
         </button>
       </div>
 
